@@ -25,6 +25,9 @@ dependencies:
   '@nestjs/platform-express':
     specifier: ^9.0.0
     version: 9.0.0(@nestjs/common@9.0.0)(@nestjs/core@9.0.0)
+  bcrpyt:
+    specifier: ^2.0.0
+    version: 2.0.0
   class-transformer:
     specifier: ^0.5.1
     version: 0.5.1
@@ -72,6 +75,9 @@ devDependencies:
   '@nestjs/testing':
     specifier: ^9.0.0
     version: 9.0.0(@nestjs/common@9.0.0)(@nestjs/core@9.0.0)(@nestjs/platform-express@9.0.0)
+  '@types/bcrypt':
+    specifier: ^5.0.0
+    version: 5.0.0
   '@types/express':
     specifier: ^4.17.13
     version: 4.17.13
@@ -1159,6 +1165,12 @@ packages:
       '@babel/types': 7.21.5
     dev: true
 
+  /@types/bcrypt@5.0.0:
+    resolution: {integrity: sha512-agtcFKaruL8TmcvqbndlqHPSJgsolhf/qPWchFlgnW1gECTN/nKbFcoFnvKAQRFfKbh+BO6A3SWdJu9t+xF3Lw==}
+    dependencies:
+      '@types/node': 18.16.12
+    dev: true
+
   /@types/body-parser@1.19.2:
     resolution: {integrity: sha512-ALYone6pm6QmwZoAgeyNksccT9Q4AWZQ6PvfwR37GT6r6FWUPguq6sUmNGSMV2Wr761oQoBxwGGa6DR5o1DC9g==}
     dependencies:
@@ -1927,6 +1939,11 @@ packages:
 
   /base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
+
+  /bcrpyt@2.0.0:
+    resolution: {integrity: sha512-2dLzspsuyGKoUfV16yEOMflPsKOjUhFPiSjqeBr1Y0ZZceEcjayGlsUrIcOz9I6f+IwjBDuPSXnsjGAqIZcPPA==}
+    deprecated: Package abandoned, contact support@npmjs.com for more info.
+    dev: false
 
   /binary-extensions@2.2.0:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==}
