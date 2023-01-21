@@ -4,45 +4,41 @@ import {
   UnprocessableEntityException,
 } from '@nestjs/common';
 import * as bcrypt from 'bcryptjs';
-import { createUserDto } from './dto/create-user.dto';
-import { UsersRepository } from './users.repository';
-import { UserDocument } from './models/user.schema';
 import { GetUserDto } from './dto/get-user.dto';
+import { UsersRepository } from './users.repository';
+import { CreateUserDto } from './dto/create-user.dto';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly userRepository: UsersRepository) {}
+  constructor(private readonly usersRepository: UsersRepository) {}
 
-  async create(createUserDto: createUserDto) {
+  async create(createUserDto: CreateUserDto) {
     await this.validateCreateUserDto(createUserDto);
-    return await this.userRepository.create({
+    return this.usersRepository.create({
       ...createUserDto,
       password: await bcrypt.hash(createUserDto.password, 10),
     });
   }
 
-  private async validateCreateUserDto(createUserDto: createUserDto) {
+  private async validateCreateUserDto(createUserDto: CreateUserDto) {
     try {
-      await this.userRepository.findOne({ email: createUserDto.email });
-    } catch (error) {
+      await this.usersRepository.findOne({ email: createUserDto.email });
+    } catch (err) {
       return;
     }
-
-    throw new UnprocessableEntityException('Email already exist');
+    throw new UnprocessableEntityException('Email already exists.');
   }
 
-  async verifyUser(email: string, password: string): Promise<UserDocument> {
-    const user = await this.userRepository.findOne({ email });
+  async verifyUser(email: string, password: string) {
+    const user = await this.usersRepository.findOne({ email });
     const passwordIsValid = await bcrypt.compare(password, user.password);
-
     if (!passwordIsValid) {
-      throw new UnauthorizedException('Credentials are not valid');
+      throw new UnauthorizedException('Credentials are not valid.');
     }
-
     return user;
   }
 
-  async getUser(getUserDto: GetUserDto): Promise<UserDocument> {
-    return await this.userRepository.findOne({ ...getUserDto });
+  async getUser(getUserDto: GetUserDto) {
+    return this.usersRepository.findOne(getUserDto);
   }
 }
