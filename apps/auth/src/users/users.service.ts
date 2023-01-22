@@ -6,13 +6,13 @@ import {
 import * as bcrypt from 'bcryptjs';
 import { GetUserDto } from './dto/get-user.dto';
 import { UsersRepository } from './users.repository';
-import { CreateUserDto } from './dto/create-user.dto';
+import { createUserDto } from './dto/create-user.dto';
 
 @Injectable()
 export class UsersService {
   constructor(private readonly usersRepository: UsersRepository) {}
 
-  async create(createUserDto: CreateUserDto) {
+  async create(createUserDto: createUserDto) {
     await this.validateCreateUserDto(createUserDto);
     return this.usersRepository.create({
       ...createUserDto,
@@ -20,7 +20,7 @@ export class UsersService {
     });
   }
 
-  private async validateCreateUserDto(createUserDto: CreateUserDto) {
+  private async validateCreateUserDto(createUserDto: createUserDto) {
     try {
       await this.usersRepository.findOne({ email: createUserDto.email });
     } catch (err) {
