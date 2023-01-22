@@ -8,7 +8,7 @@ import {
   ReservationSchema,
 } from './reservations/models/reservation.schema';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import * as Joi from 'Joi';
+import * as Joi from 'joi';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { AUTH_SERVICE } from '@app/common/constants/services';
 
