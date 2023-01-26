@@ -1,8 +1,18 @@
-import { IsDefined, IsNumber } from 'class-validator';
-import Stripe from 'stripe';
+import { Type } from 'class-transformer';
+import {
+  IsDefined,
+  IsNotEmptyObject,
+  IsNumber,
+  ValidateNested,
+} from 'class-validator';
+import { CardDto } from './card.dto';
 
 export class CreateChargeDto {
-  card: Stripe.PaymentMethodCreateParams.Card1;
+  @IsDefined()
+  @IsNotEmptyObject()
+  @ValidateNested()
+  @Type(() => CardDto)
+  card: CardDto;
 
   @IsNumber()
   amount: number;

@@ -1,6 +1,6 @@
-import { Controller, Get, UsePipes, ValidationPipe } from '@nestjs/common';
-import { PaymentsService } from './payments.service';
+import { Controller, UsePipes, ValidationPipe } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
+import { PaymentsService } from './payments.service';
 import { PaymentsCreateChargeDto } from './dto/payments-create-charge.dto';
 
 @Controller()
