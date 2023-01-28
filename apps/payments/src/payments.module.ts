@@ -4,6 +4,7 @@ import * as Joi from 'joi';
 import { LoggerModule } from '@app/common';
 import { PaymentsController } from './payments.controller';
 import { PaymentsService } from './payments.service';
+import { ClientsModule, Transport } from '@nestjs/microservices';
 
 @Module({
   imports: [
